@@ -1,6 +1,14 @@
-npm-debug.log
-npm-debug.log.*
+### mac OS ###
+.DS_Store
 
-.sass-cache/
+### Node ###
+npm-debug.log
 node_modules/
+
+### Jekyll ###
 _site/
+.sass-cache/
+.jekyll-metadata
+
+### Build files
+static/css/base.css
