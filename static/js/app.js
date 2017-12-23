@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#latest-version").hide();
+  $(".latest-version").hide();
 
   $('.scroll-to-top').click(function() {
     $('html, body').animate({scrollTop : 0},800);

@@ -2,7 +2,7 @@ title: Gitify - GitHub Notifications on your desktop
 description: > # Site Description
   GitHub Notifications on your desktop. Desktop & Mobile Application.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.gitify.io" # the base hostname & protocol for your site
+url: "https://www.gitify.io" # the base hostname & protocol for your site
 
 # Build settings
 exclude: ['.gitignore', 'node_modules', 'package.json']
