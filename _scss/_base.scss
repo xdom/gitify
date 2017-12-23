@@ -1,15 +1,18 @@
-/* @group Imports */
-
-@import "../node_modules/font-awesome/scss/font-awesome.scss";
-
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
-/* @end Imports */
+@import 'node_modules/bootstrap/scss/_functions';
+@import 'node_modules/bootstrap/scss/_variables';
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
 
 
 /* @group Colours */
 
-// @ThemePrimary: #3893c6;
+$brand-purple: #555B6E;
+$brand-purple-dark: darken($brand-purple, 10%);
+
+$gray-lighter: $gray-200;
+$gray-light: $gray-300;
+$gray-dark: $gray-800;
 
 $white: #FFF;
 
@@ -18,30 +21,13 @@ $white: #FFF;
 
 /* @group Bootstrap Overrides */
 
+$brand-primary: $brand-purple-dark;
+$brand-success: #69B578;
+
 $font-family-sans-serif: 'Open Sans', sans-serif;
+
+$link-color: $brand-purple-dark;
 $link-hover-decoration: none;
-
-// $border-radius: 0;
-// $border-radius-lg: 0;
-// $border-radius-sm: 0;
-
-// $body-bg: $theme-bg;
-
-// $link-color: $dark-gray;
-// $link-hover-color: darken($theme-primary, 10%);
-// $link-hover-decoration: none;
-
-// $headings-font-family: $font-averia;
-// $headings-color: $theme-alt;
-
-// $code-bg: #ececec;
-
-// $container-max-widths: (
-//   sm: 576px,
-//   md: 720px,
-//   lg: 760px,
-//   xl: 761px
-// );
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
@@ -119,13 +105,11 @@ html, body {
 /* @group Header */
 
 .header {
-  @include gradient-directional(darken($gray-lighter, 15%), $gray-lighter, 320deg);
-
   @include media-breakpoint-down(sm) {
     min-height: 100%;
   }
 
-  background-color: $gray-lighter;
+  background-color: $brand-purple;
 
   .jumbotron {
     background-color: transparent;
@@ -135,41 +119,25 @@ html, body {
     padding-bottom: 1rem;
 
     .logo {
-      width: 150px;
-      height: auto;
+      width: 105px;
       margin: 0 auto;
     }
 
-    h1 {
+    .site-title {
       @include font-open-sans-light();
       
-      font-size: 2rem;
-      margin: 1rem auto;
+      margin: 1.5rem auto 0;
       max-width: 450px;
-      color: darken($gray-dark, 10%);
+      color: $gray-light;
     }
 
     .desktop {
-      margin-top: 1.5rem;
-
-      .btn-download {
-        margin: 0;
-        display: block;
-        width: 100%;
-
-        @include media-breakpoint-up(md) {
-          display: inline-block;
-          width: auto;
-          min-width: 165px;
-        }
-      }
-
       .latest-version {
         @include font-open-sans-light();
 
         margin: 0 0 20px;
         padding: .1rem 0;
-        color: darken($gray-dark, 10%);
+        color: $gray-light;
         font-size: 0.9em;
         text-align: left;
 
@@ -188,30 +156,6 @@ html, body {
         width: 100%;
         max-width: 400px;
         margin: 1rem auto;
-      }
-    }
-
-    .mobile {
-      margin-top: 1.5rem;
-
-      .store-logos {
-        margin: 0 auto 1rem;
-        text-align: center;
-
-        .store-logo {
-          display: inline-block;
-          max-width: 160px;
-          margin: 0 .25rem;
-
-          @include media-breakpoint-down(sm) {
-            margin: .5rem 0;
-          }
-        }
-      }
-
-      .screenshot {
-        max-width: 300px;
-        margin: 3rem auto;
       }
     }
   }
@@ -247,12 +191,12 @@ html, body {
   @include font-open-sans-light();
 
   background-color: $gray-light;
-  color: $white;
+  // color: $white;
   padding: 20px 0;
 
-  a {
-    color: darken($white, 10%);
-  }
+  // a {
+  //   color: darken($white, 10%);
+  // }
 
   .text-right {
     text-align: right;
