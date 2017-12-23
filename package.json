@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "watch": "node-sass -w _scss/_base.scss static/css/base.css",
-    "build": "node-sass --output-style compressed  _scss/_base.scss static/css/base.css",
+    "build": "node-sass --output-style compressed _scss/_base.scss static/css/base.css",
     "start": "npm run watch & jekyll serve --watch",
     "postinstall": "npm run build"
   },

@@ -7,5 +7,5 @@ url: "http://www.gitify.io" # the base hostname & protocol for your site
 # Build settings
 exclude: ['.gitignore', 'node_modules', 'package.json']
 
-gems:
+plugins:
   - jekyll-sitemap
