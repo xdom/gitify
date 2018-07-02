@@ -32,6 +32,7 @@ export default function reducer(state = initialState, action) {
 
       return state
         .set('isFetching', false)
+        .set('username', action.payload.username)
         .set('token', action.payload.access_token);
     case LOGIN.FAILURE:
       return state

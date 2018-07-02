@@ -37,6 +37,9 @@ export class LoginPage extends React.Component {
           <i className="fa fa-github mr-2" /> Login to GitHub
         </button>
 
+        <Link to="/patlogin" className="btn btn-block btn-login mt-3">
+          <i className="fa fa-github mr-2" /> Login to GitHub <small>(using Personal Access Token)</small>
+        </Link>
         <Link to="/enterpriselogin" className="btn btn-block btn-login mt-3">
           <i className="fa fa-github mr-2" /> Login to GitHub Enterprise
         </Link>

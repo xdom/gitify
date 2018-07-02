@@ -17,6 +17,7 @@ import Loading from './components/loading';
 import LoginPage from './routes/login';
 import NotificationsRoute from './routes/notifications';
 import EnterpriseLoginPage from './routes/enterprise-login';
+import PATLoginPage from './routes/pat-login';
 import SettingsModal from './components/settings-modal';
 
 // Store
@@ -66,6 +67,7 @@ ReactDOM.render(
           <PrivateRoute path="/" exact component={NotificationsRoute} />
           <Route path="/login" component={LoginPage} />
           <Route path="/enterpriselogin" component={EnterpriseLoginPage} />
+          <Route path="/patlogin" component={PATLoginPage} />
           <Route component={NotFound} />
         </Switch>
       </div>

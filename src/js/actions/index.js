@@ -37,17 +37,50 @@ export function loginUser(authOptions, code) {
 
     return apiRequest(url, method, data)
       .then(function(response) {
-        dispatch({
-          type: LOGIN.SUCCESS,
-          payload: response.data,
-          isEnterprise,
-          hostname,
-        });
+        currentUser(response.data.access_token)
+          .then(userResponse =>
+            dispatch({
+              type: LOGIN.SUCCESS,
+              payload: { ...response.data, ...userResponse.data },
+              isEnterprise,
+              hostname,
+            })
+          )
+          .catch(error =>
+            dispatch({ type: LOGIN.FAILURE, payload: response.data })
+          )
       })
       .catch(function(error) {
         dispatch({ type: LOGIN.FAILURE, payload: error.response.data });
       });
   };
+}
+
+export function loginUserPAT(authOptions) {
+  return dispatch => {
+    dispatch({ type: LOGIN.REQUEST });
+    currentUser(authOptions.access_token)
+      .then(() =>
+        dispatch({
+          type: LOGIN.SUCCESS,
+          payload: {
+            username: authOptions.username,
+            access_token: authOptions.access_token
+          }
+        })
+      )
+      .catch(error => {
+        console.log("Error while logging in ", error);
+        dispatch({ type: LOGIN.FAILURE, payload: {} });
+      })
+  };
+}
+
+function currentUser(token) {
+  const method = 'GET';
+  const url = `https://api.${Constants.DEFAULT_AUTH_OPTIONS
+    .hostname}/user`;
+  return apiRequestAuth(url, method, token);
 }
 
 export const LOGOUT = 'LOGOUT';
