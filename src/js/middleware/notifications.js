@@ -6,6 +6,7 @@ import {
 } from '../actions';
 import NativeNotifications from '../utils/notifications';
 import { setBadge, updateTrayIcon } from '../utils/comms';
+import moment from 'moment';
 
 export default store => next => action => {
   const settings = store.getState().settings;
@@ -21,6 +22,8 @@ export default store => next => action => {
         }
       );
 
+      const now = moment()
+
       const newNotifications = action.payload.map(accNotifications => {
         const prevAccNotifications = previousNotifications
           .find(
@@ -31,7 +34,17 @@ export default store => next => action => {
           .get('notifications', List());
 
         return accNotifications.get('notifications').filter(obj => {
-          return !prevAccNotifications.contains(obj.get('id'));
+          const isInPrevNotifications = notif =>
+            prevAccNotifications.contains(notif.get('id'));
+          const isUnreadReviewRequest = notif => {
+            const reason = notif.get('reason');
+            const unread = notif.get('unread');
+            const updated = moment(notif.get('updated_at'));
+            const timeSinceUpdated = now.diff(updated, 'minutes');
+            return reason === 'review_requested' && unread
+              && timeSinceUpdated > 0 && timeSinceUpdated % 60 === 0;
+          }
+          return !isInPrevNotifications(obj) || isUnreadReviewRequest(obj);
         });
       });
 
